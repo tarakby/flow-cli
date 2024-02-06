@@ -126,8 +126,8 @@ build:
 		CC=x86_64-linux-gnu-gcc ; \
 	else \
 		echo "arch target" $(GOARCH) "is not supported" ; \
-	fi 
+	fi
 	CGO_ENABLED=1 \
 	CGO_FLAGS="-O2 -D__BLST_PORTABLE__" \
 	CC=$(CC) \
-	 go build
+	 go build -C ./cmd/flow
