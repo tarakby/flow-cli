@@ -116,18 +116,18 @@ install-cross-build-tools:
 
 # INPUT_GOARCH is a variable set by the wangyoucao577 action
 # https://github.com/wangyoucao577/go-release-action/blob/v1.40/action.yml#L109
-GOARCH := $(INPUT_GOARCH)
+C_COMP := clang
+ifeq ($(INPUT_GOARCH), arm64)
+    C_COMP := aarch64-linux-gnu-gcc
+endif
+ifeq ($(INPUT_GOARCH), amd64)
+    C_COMP := x86_64-linux-gnu-gcc
+endif
 
 .PHONY: build
 build:
-	if [ "$(GOARCH)" = "arm64" ] ; then \
-		CC=aarch64-linux-gnu-gcc ; \
-	elif [ "$(GOARCH)" = "amd64" ] ; then \
-		CC=x86_64-linux-gnu-gcc ; \
-	else \
-		echo "arch target" $(GOARCH) "is not supported" ; \
-	fi
 	CGO_ENABLED=1 \
 	CGO_FLAGS="-O2 -D__BLST_PORTABLE__" \
-	CC=$(CC) \
+	CC=$(C_COMP) \
+	GOARCH=$(INPUT_GOARCH) \
 	 go build -C ./cmd/flow
