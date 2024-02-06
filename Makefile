@@ -126,8 +126,9 @@ endif
 
 .PHONY: build
 build:
+	GO111MODULE=on \
 	CGO_ENABLED=1 \
 	CGO_FLAGS="-O2 -D__BLST_PORTABLE__" \
 	CC=$(C_COMP) \
 	GOARCH=$(INPUT_GOARCH) \
-	 go build -C ./cmd/flow
+	 go build
