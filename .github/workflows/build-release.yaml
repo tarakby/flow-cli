@@ -35,7 +35,7 @@ jobs:
           COMMIT: ${{ github.sha }}
         with:
           pre_command: make generate && make install-cross-build-tools
-          build_command: make build
+          build_command: cd ../../ && make build
           github_token: ${{ secrets.GITHUB_TOKEN }}
           goos: ${{ matrix.goos }}
           goarch: ${{ matrix.goarch }}

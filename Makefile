@@ -127,6 +127,7 @@ build:
 	else \
 		echo "arch target" $(GOARCH) "is not supported" ; \
 	fi 
-	CGO_ENABLED=1 CGO_FLAGS="-O2 -D__BLST_PORTABLE__" GOARCH=$(GOARCH) CC=$(CC) go build
-
-
+	CGO_ENABLED=1 \
+	CGO_FLAGS="-O2 -D__BLST_PORTABLE__" \
+	CC=$(CC) \
+	 go build
