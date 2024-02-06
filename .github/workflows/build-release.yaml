@@ -34,7 +34,8 @@ jobs:
           VERSION: ${{github.ref_name}}
           COMMIT: ${{ github.sha }}
         with:
-          pre_command: make pre-build && echo $CGO_ENABLED $CC $CGO_FLAGS $GOARCH
+          pre_command: make generate && make install-cross-build-tools
+          build_command: make build
           github_token: ${{ secrets.GITHUB_TOKEN }}
           goos: ${{ matrix.goos }}
           goarch: ${{ matrix.goarch }}

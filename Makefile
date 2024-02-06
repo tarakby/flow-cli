@@ -118,16 +118,15 @@ install-cross-build-tools:
 # https://github.com/wangyoucao577/go-release-action/blob/v1.40/action.yml#L109
 GOARCH := $(INPUT_GOARCH)
 
-
-.PHONY: pre-build
-pre-build: generate install-cross-build-tools
-	echo 'export CGO_ENABLED=1'
-	echo 'export CGO_FLAGS="-O2 -D__BLST_PORTABLE__"'
+.PHONY: build
+build:
 	if [ "$(GOARCH)" = "arm64" ] ; then \
-		echo 'export CC=aarch64-linux-gnu-gcc' ; \
+		CC=aarch64-linux-gnu-gcc ; \
 	elif [ "$(GOARCH)" = "amd64" ] ; then \
-		echo 'export CC=x86_64-linux-gnu-gcc' ; \
+		CC=x86_64-linux-gnu-gcc ; \
 	else \
 		echo "arch target" $(GOARCH) "is not supported" ; \
 	fi 
+	CGO_ENABLED=1 CGO_FLAGS="-O2 -D__BLST_PORTABLE__" GOARCH=$(GOARCH) CC=$(CC) go build
+
 
