@@ -1,8 +1,8 @@
 name: Build Release
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+
 
 jobs:
   releases-matrix:
@@ -34,7 +34,7 @@ jobs:
           VERSION: ${{github.ref_name}}
           COMMIT: ${{ github.sha }}
         with:
-          pre_command: make pre-build
+          pre_command: make pre-build && make debug
           github_token: ${{ secrets.GITHUB_TOKEN }}
           goos: ${{ matrix.goos }}
           goarch: ${{ matrix.goarch }}

@@ -130,3 +130,10 @@ pre-build: generate install-cross-build-tools
 	else \
 		echo "arch target" $(GOARCH) "is not supported" ; \
 	fi 
+
+.SILENT: debug
+debug:
+	echo $(CGO_ENABLED)
+	echo $(CGO_FLAGS)
+	echo $(GOARCH)
+	echo $(CC)
