@@ -131,4 +131,5 @@ build:
 	CGO_FLAGS="-O2 -D__BLST_PORTABLE__" \
 	CC=$(C_COMP) \
 	GOARCH=$(INPUT_GOARCH) \
-	 go build
+	 go build -C ./cmd/flow
+
