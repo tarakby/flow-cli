@@ -107,9 +107,9 @@ generate: install-tools
 .PHONY: install-cross-build-tools
 install-cross-build-tools:
 	if [ "$(UNAME)" = "Debian" ] ; then \
-		apt-get update && apt-get -y install apt-utils gcc-aarch64-linux-gnu ; \
+		apt-get update && apt-get -y install apt-utils gcc-aarch64-linux-gnu gcc-mingw-w64-x86-64 ; \
 	elif [ "$(UNAME)" = "Linux" ] ; then \
-		apt-get update && apt-get -y install apt-utils gcc-aarch64-linux-gnu ; \
+		apt-get update && apt-get -y install apt-utils gcc-aarch64-linux-gnu gcc-mingw-w64-x86-64 ; \
 	else \
 		echo "this target only works on Debian or Linux, host runs on" $(UNAME) ; \
 	fi
