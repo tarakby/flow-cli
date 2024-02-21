@@ -19,7 +19,7 @@ if [ "${GOOS}" = "linux" ]; then
     fi
 elif [ "${GOOS}" = "windows" ]; then
     if [ "${GOARCH}" = "amd64" ]; then
-        C_COMP="x86_64-w64-mingw-gcc"
+        C_COMP="x86_64-w64-mingw32-gcc"
     else 
         { echo "arm64 on windows isn't supported"; exit 1; }
     fi
