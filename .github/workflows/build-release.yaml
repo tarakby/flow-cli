@@ -34,7 +34,7 @@ jobs:
           VERSION: ${{github.ref_name}}
           COMMIT: ${{ github.sha }}
         with:
-          pre_command: make generate && make install-cross-build-tools && sh pre_build.sh
+          pre_command: make generate && make install-cross-build-tools && source pre_build.sh
           github_token: ${{ secrets.GITHUB_TOKEN }}
           goos: ${{ matrix.goos }}
           goarch: ${{ matrix.goarch }}

@@ -12,7 +12,7 @@ elif [ "${INPUT_GOARCH}" = "amd64" ]; then
     C_COMP="x86_64-linux-gnu-gcc"
 fi
 
-export GO111MODULE=on
-export CGO_ENABLED=1
-export CC=${C_COMP}
-export CGO_FLAGS=\""-O2 -D__BLST_PORTABLE__"\"
+GO111MODULE=on
+CGO_ENABLED=1
+CC=${C_COMP}
+CGO_FLAGS=\""-O2 -D__BLST_PORTABLE__"\"
