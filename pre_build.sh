@@ -11,5 +11,6 @@ elif [ "${INPUT_GOARCH}" = "amd64" ]; then
     CC="x86_64-linux-gnu-gcc"
 fi
 
+GO111MODULE=on
 CGO_ENABLED=1
 CGO_FLAGS=\""-O2 -D__BLST_PORTABLE__"\"
