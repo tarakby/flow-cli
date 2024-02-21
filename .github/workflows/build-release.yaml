@@ -41,4 +41,3 @@ jobs:
           goversion: "1.20"
           project_path: ./cmd/flow
           build_flags: GO111MODULE=on
-          ldflags: -X "github.com/tarakby/flow-cli/build.commit=${{ env.COMMIT }}" -X "github.com/tarakby/flow-cli/build.semver=${{ env.VERSION }}" -X "github.com/tarakby/flow-cli/internal/command.mixpanelToken=${{ env.MIXPANEL_PROJECT_TOKEN }}" -X "github.com/tarakby/flow-cli/internal/accounts.accountToken=${{ env.LILICO_TOKEN }}"
