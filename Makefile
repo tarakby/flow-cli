@@ -114,22 +114,5 @@ install-cross-build-tools:
 		echo "this target only works on Debian or Linux, host runs on" $(UNAME) ; \
 	fi
 
-# INPUT_GOARCH is a variable set by the wangyoucao577 action
-# https://github.com/wangyoucao577/go-release-action/blob/v1.40/action.yml#L109
-C_COMP := clang
-ifeq ($(INPUT_GOARCH), arm64)
-    C_COMP := aarch64-linux-gnu-gcc
-endif
-ifeq ($(INPUT_GOARCH), amd64)
-    C_COMP := x86_64-linux-gnu-gcc
-endif
 
-.PHONY: build
-build:
-	GO111MODULE=on \
-	CGO_ENABLED=1 \
-	CGO_FLAGS="-O2 -D__BLST_PORTABLE__" \
-	CC=$(C_COMP) \
-	GOARCH=$(INPUT_GOARCH) \
-	 go build -C ./cmd/flow
 
